@@ -54,7 +54,8 @@
           <img src="<?php echo base_url('uploads/CV.jpg') ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">TRIGGERS</a>
+          <?php $roleUser = ($roleUser == 1) ? "Administrateur" : "Simple User" ?>
+          <a href="#" class="d-block"><?= $roleUser ?></a>
         </div>
       </div>
 

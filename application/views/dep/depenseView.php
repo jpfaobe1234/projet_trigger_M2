@@ -42,7 +42,7 @@
                 </thead>
                 <tbody id="tbody_depense">
                   <?php 
-                      $data = $this->db->get('depense')->result();               
+                      $data = $this->db->order_by('id_dep', 'DESC')->get('depense')->result();               
                       foreach ($data as $row):
                         $this->db->select('nom_etab');
                         $this->db->from('etablissement');

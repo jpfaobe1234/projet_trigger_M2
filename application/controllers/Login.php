@@ -58,19 +58,9 @@ class Login extends CI_Controller {
                 $where = array('su_id' => $this->session->userdata('user_id'));
                 $this->LoginModel->edit('systemusers', $champs, $where);
 
-                $journal = array(
-                    'journal_content' => 'Connexion à la plateforme', 
-                    'journal_iduser' => $this->session->userdata('user_id'),
-                    'journal_idrole' => $this->session->userdata('user_role'),
-                    'journal_datetime' => date('Y-m-d H:i:s'), 
-                );
-                if ($this->session->userdata('user_id')) {
-                    // $this->seb_model->add('journal', $journal);
-                }
-
                 $role = $this->session->userdata['user_role'];
-                if ($role == 0 || $role == 1 || $role == 2) {
-                    redirect(site_url('depense'));
+                if ($role == 1) {
+                    redirect(site_url('audit'));
                 } else{
                     redirect(site_url('depense'));
                 }
@@ -79,7 +69,7 @@ class Login extends CI_Controller {
                 '<div align="center" class="alert alert-danger" style="background:red">
                     Login / Mot de passe incorrect !
                 </div>');
-        redirect('login');
+            redirect('login');
         }        
     }
 
